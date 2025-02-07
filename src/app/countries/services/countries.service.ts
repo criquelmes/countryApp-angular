@@ -8,6 +8,12 @@ export class CountriesService {
   private apiUrl: string = 'https://restcountries.com/v3.1';
   constructor(private httpClient: HttpClient) {}
 
+  searchCountryByCode(query: string): Observable<Country[]> {
+    return this.httpClient
+      .get<Country[]>(`${this.apiUrl}/alpha/${query}`)
+      .pipe(catchError((error) => of([])));
+  }
+
   searchCapital(query: string): Observable<Country[]> {
     return this.httpClient
       .get<Country[]>(`${this.apiUrl}/capital/${query}`)
