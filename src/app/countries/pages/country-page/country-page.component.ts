@@ -27,7 +27,6 @@ export class CountryPageComponent implements OnInit {
   }
 
   fetchCountryDetails(countryName: string): void {
-    // Implement the logic to fetch country details here
     console.log(`Fetching details for ${countryName}`);
   }
 }
