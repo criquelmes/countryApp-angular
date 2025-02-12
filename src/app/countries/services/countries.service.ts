@@ -6,6 +6,21 @@ import { Country } from '../interfaces/country';
 @Injectable({ providedIn: 'root' })
 export class CountriesService {
   private apiUrl: string = 'https://restcountries.com/v3.1';
+  public cacheStore = {
+    byCapital: {
+      term: '',
+      countries: [],
+    },
+    byCountry: {
+      term: '',
+      countries: [],
+    },
+    byRegion: {
+      region: '',
+      countries: [],
+    },
+  };
+
   constructor(private httpClient: HttpClient) {}
 
   private getCountriesRequest(url: string): Observable<Country[]> {
